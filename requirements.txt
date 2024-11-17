@@ -4,3 +4,8 @@ opencv-python
 einops
 omegaconf
 pytorch_lightning
+torch
+gradio
+httpx[socks]
+huggingface_hub==0.25.0
+moviepy
