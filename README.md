@@ -91,6 +91,75 @@ Here are some example prompts you can use to generate different character images
 
 ![Screenshot 2024-11-17 133421](https://github.com/user-attachments/assets/7a920f4c-8a3a-4387-98d6-381a798566ef)
 
+## MasaCtrl as Video demo 
+### Use ToonCrafter to create Video (Source image as start, MasaCtrl image as end)
+```shell
+git clone https://huggingface.co/spaces/svjack/ToonCrafter-fp16 && cd ToonCrafter-fp16 && pip install -r requirements.txt
+python app.py
+```
+### Use Practical-RIFE to interplotation 
+```shell
+git clone https://github.com/svjack/Practical-RIFE && cd Practical-RIFE && pip install -r requirements.txt
+python inference_video.py --multi=128 --video=../zhongli_sitting_down.mp4
+python inference_video.py --multi=128 --video=../ayato_smiling.mp4
+```
+### Use Real-ESRGAN-Video to upscale 
+```shell
+pip install py-real-esrgan moviepy
+```
+```python
+from video_upscaler_with_skip import *
+
+input_video_path = "zhongli_sitting_down_128X_1024fps.mp4"
+output_video_path = "zhongli_sitting_down_128X_1024fps_x4_sk2.mp4"
+upscale_factor = 4
+threshold = 2  # 设置阈值，0表示不跳过任何帧
+upscale_video(input_video_path, output_video_path, upscale_factor, max_frames=None, threshold=threshold)
+
+input_video_path = "ayato_smiling_128X_1024fps.mp4"
+output_video_path = "ayato_smiling_128X_1024fps_x4_sk2.mp4"
+upscale_factor = 4
+threshold = 2  # 设置阈值，0表示不跳过任何帧
+upscale_video(input_video_path, output_video_path, upscale_factor, max_frames=None, threshold=threshold)
+```
+
+<div style="display: flex; flex-direction: column; align-items: center;">
+    <div style="margin-bottom: 10px;">
+        <h3>Zhongli Drinking Tea:</h3>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <video controls autoplay src="https://github.com/user-attachments/assets/600efb3d-20bc-4791-86b8-2c3210dd65f3" style="width: 512px; height: 256px;"></video>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <video controls autoplay src="https://github.com/user-attachments/assets/607e7eb7-d41c-4740-9c8a-8369c31487da" style="width: 512px; height: 256px;"></video>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <h3>Kamisato Ayato Smiling:</h3>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <video controls autoplay src="https://github.com/user-attachments/assets/03740d07-a113-4874-ab21-2326477eb675" style="width: 1024px; height: 768px;"></video>
+    </div>
+    <div style="margin-bottom: 10px;">
+        <video controls autoplay src="https://github.com/user-attachments/assets/aaa9849e-0c53-4012-b6c3-9ceb9910f2f8" style="width: 1024px; height: 768px;"></video>
+    </div>
+</div>
+
+
+
+<!--
+- **Zhongli Drinking Tea:**
+#### ToonCrafter output 
+https://github.com/user-attachments/assets/70ea5cd8-1fd1-40cf-b645-6577d3347f4a
+#### Output processed
+https://github.com/user-attachments/assets/53b06bd0-1868-4fb0-8fb6-2201a2e092ea
+- **Kamisato Ayato Smiling:**
+#### ToonCrafter output 
+https://github.com/user-attachments/assets/6132ebb4-3fa2-4fcc-9c0e-3ca93027935d
+#### Output processed
+https://github.com/user-attachments/assets/5938eda0-0109-450b-aa4f-953485bd6182
+-->
+
+
 ## MasaCtrl: Tuning-free <span style="text-decoration: underline"><font color="Tomato">M</font></span>utu<span style="text-decoration: underline"><font color="Tomato">a</font></span>l <span style="text-decoration: underline"><font color="Tomato">S</font></span>elf-<span style="text-decoration: underline"><font color="Tomato">A</font></span>ttention <span style="text-decoration: underline"><font color="Tomato">Control</font></span> for Consistent Image Synthesis and Editing
 
 Pytorch implementation of [MasaCtrl: Tuning-free Mutual Self-Attention Control for **Consistent Image Synthesis and Editing**](https://arxiv.org/abs/2304.08465)
