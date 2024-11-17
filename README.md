@@ -67,7 +67,7 @@ python run_synthesis_genshin_impact_xl.py --model_path "svjack/GenshinImpact_XL_
  --prompt2 "solo,ZHONGLI drink tea use chinese cup \(genshin impact\),1boy,highres," --guidance_scale 5
 ```
 
-### Gradio Interface
+### Gradio Interface (Locate in https://huggingface.co/spaces/svjack/Genshin-Impact-XL-MasaCtrl)
 Alternatively, you can use the Gradio interface for a more interactive experience:
 
 ```bash
