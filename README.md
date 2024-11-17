@@ -1,3 +1,96 @@
+# MotionCtrl and MasaCtrl: Genshin Impact Character Synthesis
+
+This repository provides a guide to setting up and running the MotionCtrl and MasaCtrl projects for synthesizing Genshin Impact characters using machine learning models. The process involves cloning repositories, installing dependencies, and executing scripts to generate and visualize character images.
+
+## Table of Contents
+- [Prerequisites](#prerequisites)
+- [Installation](#installation)
+- [Running the Synthesis](#running-the-synthesis)
+- [Using Gradio Interface](#using-gradio-interface)
+- [Example Prompts](#example-prompts)
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Python 3.10
+- Conda (for environment management)
+- Git
+- Git LFS (Large File Storage)
+- FFmpeg
+
+## Installation
+
+### Step 1: Clone the MotionCtrl Repository
+Clone the MotionCtrl repository and install its dependencies:
+
+```bash
+git clone https://huggingface.co/spaces/svjack/MotionCtrl
+cd MotionCtrl
+pip install -r requirements.txt
+```
+
+### Step 2: Install System Dependencies
+Update your package list and install necessary system packages:
+
+```bash
+sudo apt-get update
+sudo apt-get install cbm git-lfs ffmpeg
+```
+
+### Step 3: Set Up Python Environment
+Create a Conda environment with Python 3.10, activate it, and install the IPython kernel:
+
+```bash
+conda create -n py310 python=3.10
+conda activate py310
+pip install ipykernel
+python -m ipykernel install --user --name py310 --display-name "py310"
+```
+
+### Step 4: Clone the MasaCtrl Repository
+Clone the MasaCtrl repository and install its dependencies:
+
+```bash
+git clone https://github.com/svjack/MasaCtrl
+cd MasaCtrl
+pip install -r requirements.txt
+```
+
+## Running the Synthesis
+
+### Command Line Interface
+Run the synthesis script to generate images of Genshin Impact characters:
+
+```bash
+python run_synthesis_genshin_impact_xl.py --model_path "svjack/GenshinImpact_XL_Base" \
+ --prompt1 "solo,ZHONGLI\(genshin impact\),1boy,highres," \
+ --prompt2 "solo,ZHONGLI drink tea use chinese cup \(genshin impact\),1boy,highres," --guidance_scale 5
+```
+
+### Gradio Interface
+Alternatively, you can use the Gradio interface for a more interactive experience:
+
+```bash
+python run_synthesis_genshin_impact_xl_app.py
+```
+
+## Example Prompts
+
+Here are some example prompts you can use to generate different character images: (Image with MasaCtrl more like Source Image: In terms of background and other aspects)
+
+- **Zhongli Drinking Tea:**
+  ```
+  "solo,ZHONGLI(genshin impact),1boy,highres," -> "solo,ZHONGLI drink tea use chinese cup (genshin impact),1boy,highres,"
+  ```
+![Screenshot 2024-11-17 132742](https://github.com/user-attachments/assets/00451728-f2d5-4009-afa8-23baaabdc223)
+
+- **Kamisato Ayato Smiling:**
+  ```
+  "solo,KAMISATO AYATO(genshin impact),1boy,highres," -> "solo,KAMISATO AYATO smiling (genshin impact),1boy,highres,"
+  ```
+
+![Screenshot 2024-11-17 133421](https://github.com/user-attachments/assets/7a920f4c-8a3a-4387-98d6-381a798566ef)
+
 ## MasaCtrl: Tuning-free <span style="text-decoration: underline"><font color="Tomato">M</font></span>utu<span style="text-decoration: underline"><font color="Tomato">a</font></span>l <span style="text-decoration: underline"><font color="Tomato">S</font></span>elf-<span style="text-decoration: underline"><font color="Tomato">A</font></span>ttention <span style="text-decoration: underline"><font color="Tomato">Control</font></span> for Consistent Image Synthesis and Editing
 
 Pytorch implementation of [MasaCtrl: Tuning-free Mutual Self-Attention Control for **Consistent Image Synthesis and Editing**](https://arxiv.org/abs/2304.08465)
