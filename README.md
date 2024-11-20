@@ -170,6 +170,7 @@ https://github.com/user-attachments/assets/6132ebb4-3fa2-4fcc-9c0e-3ca93027935d
 https://github.com/user-attachments/assets/5938eda0-0109-450b-aa4f-953485bd6182
 -->
 
+## More models can be tried by (https://github.com/the-database/VideoJaNai) Use model from (https://openmodeldb.info/)
 
 ## MasaCtrl: Tuning-free <span style="text-decoration: underline"><font color="Tomato">M</font></span>utu<span style="text-decoration: underline"><font color="Tomato">a</font></span>l <span style="text-decoration: underline"><font color="Tomato">S</font></span>elf-<span style="text-decoration: underline"><font color="Tomato">A</font></span>ttention <span style="text-decoration: underline"><font color="Tomato">Control</font></span> for Consistent Image Synthesis and Editing
 
