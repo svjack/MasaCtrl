@@ -131,7 +131,7 @@ upscale_video(input_video_path, output_video_path, upscale_factor, max_frames=No
         <video controls autoplay src="https://github.com/user-attachments/assets/600efb3d-20bc-4791-86b8-2c3210dd65f3" style="width: 512px; height: 256px;"></video>
     </div>
     <div style="margin-bottom: 10px;">
-        <video controls autoplay src="https://github.com/user-attachments/assets/607e7eb7-d41c-4740-9c8a-8369c31487da" style="width: 512px; height: 256px;"></video>
+        <video controls autoplay src="" style="width: 512px; height: 256px;"></video>
     </div>
     <div style="margin-bottom: 10px;">
         <h3>Kamisato Ayato Smiling:</h3>
@@ -140,11 +140,22 @@ upscale_video(input_video_path, output_video_path, upscale_factor, max_frames=No
         <video controls autoplay src="https://github.com/user-attachments/assets/03740d07-a113-4874-ab21-2326477eb675" style="width: 1024px; height: 768px;"></video>
     </div>
     <div style="margin-bottom: 10px;">
-        <video controls autoplay src="https://github.com/user-attachments/assets/aaa9849e-0c53-4012-b6c3-9ceb9910f2f8" style="width: 1024px; height: 768px;"></video>
+        <video controls autoplay src="" style="width: 1024px; height: 768px;"></video>
     </div>
 </div>
 
+### Real-ESRGAN-Video Upscale conclusion
 
+https://github.com/user-attachments/assets/607e7eb7-d41c-4740-9c8a-8369c31487da
+
+https://github.com/user-attachments/assets/aaa9849e-0c53-4012-b6c3-9ceb9910f2f8
+
+### APISR(https://github.com/svjack/APISR) Upscale conclusion
+
+![zhongli_up (1)](https://github.com/user-attachments/assets/728ad8b1-53ab-40f7-ba50-3e6ec4049d54)
+
+
+![lingren_up (1)](https://github.com/user-attachments/assets/ab9168d3-00bd-451f-b14a-0bde7ba5e79b)
 
 <!--
 - **Zhongli Drinking Tea:**
