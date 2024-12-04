@@ -54,6 +54,7 @@ Clone the MasaCtrl repository and install its dependencies:
 git clone https://github.com/svjack/MasaCtrl
 cd MasaCtrl
 pip install -r requirements.txt
+pip install -U accelerate
 ```
 
 ## Running the Synthesis
