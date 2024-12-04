@@ -73,6 +73,15 @@ python run_synthesis_genshin_impact_xl_offload.py --model_path "svjack/GenshinIm
  --prompt1 "solo,ZHONGLI\(genshin impact\),1boy,highres," \
  --prompt2 "solo,ZHONGLI drink tea use chinese cup \(genshin impact\),1boy,highres," --guidance_scale 5
 ```
+- OR
+```bash
+python run_synthesis_genshin_impact_xl_multi_offload.py --model_path "svjack/GenshinImpact_XL_Base" \
+ --prompt1 "solo,ZHONGLI\(genshin impact\),1boy,highres," \
+ --prompt2 "solo,ZHONGLI drink tea use chinese cup \(genshin impact\),1boy,highres," \
+ --guidance_scale 5 \
+ --num_iterations 1000 \
+ --start_seed 42
+```
 
 ### Gradio Interface (Locate in https://huggingface.co/spaces/svjack/Genshin-Impact-XL-MasaCtrl)
 Alternatively, you can use the Gradio interface for a more interactive experience:
