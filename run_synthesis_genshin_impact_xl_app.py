@@ -11,7 +11,12 @@ import re
 # 初始化设备和模型
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 scheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", clip_sample=False, set_alpha_to_one=False)
-model = DiffusionPipeline.from_pretrained("svjack/GenshinImpact_XL_Base", scheduler=scheduler).to(device)
+weight_dtype = torch.float16
+
+model = DiffusionPipeline.from_pretrained("svjack/GenshinImpact_XL_Base", scheduler=scheduler,
+                                        torch_dtype=weight_dtype,
+                                         ).to(device)
+model.unet.set_default_attn_processor()
 
 def pathify(s):
     return re.sub(r'[^a-zA-Z0-9]', '_', s.lower())
@@ -26,7 +31,7 @@ def consistent_synthesis(prompt1, prompt2, guidance_scale, seed, starting_step, 
     prompts = [prompt1, prompt2]
 
     # 初始化噪声图
-    start_code = torch.randn([1, 4, 128, 128], device=device)
+    start_code = torch.randn([1, 4, 128, 128], dtype=weight_dtype, device=device)
     start_code = start_code.expand(len(prompts), -1, -1, -1)
 
     # 推理没有 MasaCtrl 的图像
