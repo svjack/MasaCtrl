@@ -55,6 +55,7 @@ git clone https://github.com/svjack/MasaCtrl
 cd MasaCtrl
 pip install -r requirements.txt
 pip install -U accelerate
+pip install -U gradio
 ```
 
 ## Running the Synthesis
