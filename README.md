@@ -121,6 +121,7 @@ Here are some example prompts you can use to generate different character images
 ```shell
 git clone https://huggingface.co/spaces/svjack/ToonCrafter-fp16 && cd ToonCrafter-fp16 && pip install -r requirements.txt
 pip install --upgrade einops
+pip install pyav==13.1.0
 python app.py
 ```
 ### Use Practical-RIFE to interplotation 
