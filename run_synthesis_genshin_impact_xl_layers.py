@@ -33,7 +33,7 @@ def pathify(s):
     return re.sub(r'[^a-zA-Z0-9]', '_', s.lower())
 
 def consistent_synthesis(args):
-    seed = 42
+    seed = args.seed if args.seed != -1 else 42
     seed_everything(seed)
 
     # Create the output directory based on prompt2
@@ -55,16 +55,17 @@ def consistent_synthesis(args):
 
     # Load the model
     scheduler = DDIMScheduler(beta_start=0.00085, beta_end=0.012, beta_schedule="scaled_linear", clip_sample=False, set_alpha_to_one=False)
-    #model = DiffusionPipeline.from_pretrained(args.model_path, scheduler=scheduler).to(device)
-    model = DiffusionPipeline.from_pretrained("svjack/GenshinImpact_XL_Base", scheduler=scheduler,
-                                            torch_dtype=weight_dtype,
-                                             ).to(device)
+    model = DiffusionPipeline.from_pretrained(args.model_path, scheduler=scheduler, torch_dtype=weight_dtype).to(device)
     model.unet.set_default_attn_processor()
 
     # inference the synthesized image without MasaCtrl
     editor = AttentionBase()
     regiter_attention_editor_diffusers(model, editor)
     image_ori = model(prompts, latents=start_code, guidance_scale=args.guidance_scale).images
+
+    # Create a directory to store the final images
+    final_out_dir = os.path.join(out_dir_ori, "final_images")
+    os.makedirs(final_out_dir, exist_ok=True)
 
     for LAYER in tqdm(LAYER_LIST, desc="Processing layers"):
         # hijack the attention module
@@ -80,6 +81,11 @@ def consistent_synthesis(args):
         image_ori[0].save(os.path.join(out_dir, f"source_step{args.step}_layer{LAYER}.png"))
         image_ori[1].save(os.path.join(out_dir, f"without_step{args.step}_layer{LAYER}.png"))
         image_masactrl[-1].save(os.path.join(out_dir, f"masactrl_step{args.step}_layer{LAYER}.png"))
+
+        # Save the final image in the final_out_dir with a sorted name
+        final_image_path = os.path.join(final_out_dir, f"layer_{LAYER:03d}.png")
+        image_masactrl[-1].save(final_image_path)
+
         with open(os.path.join(out_dir, f"prompts.txt"), "w") as f:
             for p in prompts:
                 f.write(p + "\n")
@@ -96,6 +102,7 @@ if __name__ == "__main__":
     parser.add_argument("--start", type=int, default=64, help="Start layer")
     parser.add_argument("--end", type=int, default=74, help="End layer")
     parser.add_argument("--step", type=int, default=10, help="Step size for layers")
+    parser.add_argument("--seed", type=int, default=-1, help="Random seed, default is -1 (random seed)")
 
     args = parser.parse_args()
 
