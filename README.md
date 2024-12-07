@@ -83,6 +83,14 @@ python run_synthesis_genshin_impact_xl_multi_offload.py --model_path "svjack/Gen
  --num_iterations 1000 \
  --start_seed 42
 ```
+- OR
+```bash
+  python run_synthesis_genshin_impact_xl_layers.py --model_path "svjack/GenshinImpact_XL_Base" \
+   --prompt1 "solo, Ancient Chinese XINGQIU in Chinese traditional long gown \(genshin impact\),1boy,highres," \
+   --prompt2 "solo, Ancient Chinese XINGQIU in Chinese traditional long gown pack clothes in a bag\(genshin impact\),1boy,highres," \
+   --guidance_scale 5 \
+   --start 14 --end 94 --step 10 --seed -1
+```
 
 ### Gradio Interface (Locate in https://huggingface.co/spaces/svjack/Genshin-Impact-XL-MasaCtrl)
 Alternatively, you can use the Gradio interface for a more interactive experience:
